@@ -1,5 +1,5 @@
 
-class sl{
+public class execption{
     String name="Sanju";
     int age;
     public void setAge(int age) throws Exception{
@@ -10,7 +10,7 @@ class sl{
         System.out.println(age);
     }
     public static void main(String[] args) throws Exception {
-        sl stu=new sl();
+    execption stu=new execption();
         stu.setAge(-10);
     }
 }

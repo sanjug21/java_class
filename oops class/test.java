@@ -1,4 +1,5 @@
-public class test {
+
+public class test  {
   
         public static boolean check(int []arr,int mid,int ncow){
             int lp=arr[0];
@@ -15,6 +16,8 @@ public class test {
         }
         
         public static void main(String[] args) {
+           
+        
             // int n=5;
             // int ncow=3;
             // int []arr={1,2,4,8,9};

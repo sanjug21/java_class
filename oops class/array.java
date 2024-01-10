@@ -1,42 +1,42 @@
-// import java.util.Arrays;
+
 // import java.util.Scanner;
 
-import java.util.Arrays;
 
 class array{
     public static void main(String []args){
         // int nums[]={2,3,1,2,4,3};
         // int target=7;
-        //   int ary[]={5,4,1,3,2};
+          int ary[]={5,4,1,3,2};
 
 
 
-         // Selection sort
-         //     for(int i=0;i<ary.length-1;i++){
-         //         int key=i;
-         //         for(int j=i+1;j<ary.length;j++){
-         //             if(ary[j]<ary[key]){key=j;
-         //             int temp=ary[j];
-         //             ary[j]=ary[i];
-         //             ary[i]=temp;
-         //             System.out.println(Arrays.toString(ary));
-         //         }}
-         // }
-      
+    //    //  Selection sort
+    //          for(int i=0;i<ary.length-1;i++){
+    //              int key=i;
+    //              for(int j=i+1;j<ary.length;j++){
+    //                  if(ary[j]<ary[key]){key=j;
+                     
+    //              }}
+    //              int temp=ary[key];
+    //                  ary[key]=ary[i];
+    //                  ary[i]=temp;
+    //                   System.out.println(Arrays.toString(ary));
+    //      }
+    //         System.out.println("\n \n \n");
     
 
 
-        // insertion sort
-        // for(int i=1;i<ary.length;i++){
-        //     int j=i-1;
-        //     int key=ary[i];
-        //     while(j>=0 && key<ary[j]){
-        //         ary[j+1]=ary[j];
-        //         j--;
-        //     }
-        //     ary[j+1]=key;
-        //     System.out.println(Arrays.toString(ary));
-        // }
+    //    // insertion sort
+    //     for(int i=1;i<ary.length;i++){
+    //         int j=i-1;
+    //         int key=ary[i];
+    //         while(j>=0 && key<ary[j]){
+    //             ary[j+1]=ary[j];
+    //             j--;
+    //         }
+    //         ary[j+1]=key;
+    //         System.out.println(Arrays.toString(ary));
+    //     }
 
 
 
@@ -132,26 +132,33 @@ class array{
         //     cmin++;}
 
         // }
-        int arr[]={1,0,2,3,0,4,5,0};
+       // int arr[]={1,0,2,3,0,4,5,0};
 
-        int n=arr.length;
-        int k=n-1,i=0;
-        while(i<n-1){
-            if(arr[i]==0){
+        // int n=arr.length;
+        // int k=n-1,i=0;
+        // while(i<n-1){
+        //     if(arr[i]==0){
                 
-                int j=i+1;
+        //         int j=i+1;
                 
-            while(j!=k){
-                arr[k]=arr[k-1];
-                k--;
-                 //  System.out.println(Arrays.toString(arr));
-            }
-            arr[i+1]=0;
-            i+=2;
-            System.out.println(Arrays.toString(arr));
-            }
-            else i++;
-        }
+        //     while(j!=k){
+        //         arr[k]=arr[k-1];
+        //         k--;
+        //          //  System.out.println(Arrays.toString(arr));
+        //     }
+        //     arr[i+1]=0;
+        //     i+=2;
+        //     System.out.println(Arrays.toString(arr));
+        //     }
+        //     else i++;
+        // }
 
+
+
+        // int a=9,b=9;
+        // a=b++;
+        // b=a++;
+        // b=++b;
+        // System.out.println(a+"\n"+b);
   
     }}
