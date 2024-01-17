@@ -6,7 +6,7 @@ class array{
     public static void main(String []args){
         // int nums[]={2,3,1,2,4,3};
         // int target=7;
-          int ary[]={5,4,1,3,2};
+        //  int ary[]={5,4,1,3,2};
 
 
 

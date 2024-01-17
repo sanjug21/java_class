@@ -1,7 +1,5 @@
 import java.util.*;
 
-import LL.Node;
-
 public class leet {
     public class TreeNode {
              int val;
@@ -106,7 +104,7 @@ for(int i=0;i<a.length;i++){
     }
 
     // subset question
-      private static void result (int a[],List<List<Integer>> ans,List<Integer> list, int st,int ed){
+      private static void result(int a[],List<List<Integer>> ans,List<Integer> list, int st,int ed){
         if(!ans.contains(new ArrayList<>(list))){
         ans.add(new ArrayList<>(list));
         }
@@ -122,7 +120,7 @@ for(int i=0;i<a.length;i++){
  
 
     //n queen
-      public static  ArrayList convert(String arr[][],int n){
+      public static  ArrayList<String> convert(String arr[][],int n){
         ArrayList<String> con=new ArrayList<>();
        
         for(int i=0;i<n;i++){
@@ -333,22 +331,48 @@ for(int i=0;i<a.length;i++){
         }
         
     }
-    //Path Sum2
-    public static void pathSum(int target,List<List<Integer>> ans,List<Integer> temp){
-        if(target==0){
-            ans.add(new ArrayList<>(temp));
-            return;
-        }
-        target-=node.val;
-
-    }
+  
 
   
     public static void main(String[] args) {
-       
+     
 
+    //   //2482
+    //   int grid[][]={{0,1,1},{1,0,1},{0,0,1}};
+    //     int row=grid.length;
+    //     int col=grid[0].length;
+    //     int oneRow[]=new int [row];
+    //     int zeroRow[]=new int[row];
+    //     int oneCol[]=new int[col];
+    //     int zeroCol[]=new int[col];
+    //     for(int i=0;i<row;i++){
+    //         int zero =0;
+    //         int one=0;
+    //         for(int j=0;j<col;j++){
+    //             if(grid[i][j]==1)one++;
+    //             else zero++;
+    //         }
+    //         oneRow[i]=one;
+    //         zeroRow[i]=zero;
+    //     }
+    //     for(int i=0;i<col;i++){
+    //         int zero =0;
+    //         int one=0;
+    //         for(int j=0;j<row;j++){
+    //             if(grid[j][i]==1)one++;
+    //             else zero++;
+    //         }
+    //         oneCol[i]=one;
+    //         zeroCol[i]=zero;
+    //     }
+    //     for(int i=0;i<row;i++){
+    //         for(int j=0;j<col;j++){
+    //             grid[i][j]=oneRow[i]+oneCol[j]-zeroRow[i]-zeroCol[j];
+    //         }}
         
-
+    //         for(int a[]:grid){
+    //             System.out.println(Arrays.toString(a));
+    //         }
 
 
         // String contain any permutation
