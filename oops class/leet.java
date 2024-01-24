@@ -317,6 +317,15 @@ for(int i=0;i<a.length;i++){
         }
        
     }
+    //combination sum3
+    public void combinationSum3(int []arr,int idx,int k,int sum,List<Integer> temp,List<List<Integer>> ans){
+        if(k==0 && sum==0)ans.add(new ArrayList<>(temp));
+        if(idx>=arr.length || k<=0 || sum<=0)return;
+        temp.add(arr[idx]);
+        combinationSum3(arr,idx+1,k-1,sum-arr[idx],temp,ans);
+        temp.remove(temp.size()-1);
+        combinationSum3(arr,idx+1,k,sum,temp,ans);
+        }
     // permutation string
     public static void combO(String a,String b,ArrayList<String> ls){
         if(a.length() == 0) {
@@ -331,10 +340,117 @@ for(int i=0;i<a.length;i++){
         }
         
     }
-  
+    static int minVal=Integer.MAX_VALUE;
+    public static void minPath(int sum,int grid[][],int i,int j){
+        if (i >= grid.length || j >= grid[0].length) return;
+        if (i == grid.length - 1 && j == grid[0].length - 1) {
+            minVal = Math.min(minVal, sum + grid[i][j]);
+            return;
+        }
+        
+        //System.out.println(sum+" "+i+" "+j);
+        minPath(sum+grid[i][j],grid,i+1,j);
+        minPath(sum+grid[i][j],grid,i,j+1);
+        
+    }
 
+
+    //Letter Combinations of a Phone Number
+
+    public static void numComb(HashMap<Character,String> map,String s,String ans){
+        if(s.length()==0){
+            System.out.println(ans);
+            return;
+        }
+       String press=map.get(s.charAt(0));
+       for(int i=0;i<press.length();i++){
+        numComb(map, s.substring(1), ans+press.charAt(i));
+       }
+
+    }
+
+    //or 
+    static String []map={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    public static void letterCombination(String ques,String ans){
+        if(ques.length()==0){
+            System.out.println(ans);
+            return;
+        }
+        char ch=ques.charAt(0);
+        String pressed=map[ch-'0'];
+        for(int i=0;i<pressed.length();i++){
+            letterCombination(ques.substring(1), ans+pressed.charAt(i));
+        }
+    }
   
     public static void main(String[] args) {
+        //Letter Combinations of a Phone Number
+        letterCombination("23", "");
+
+        // or
+//         String s="23";
+//         HashMap <Character,String> map=new HashMap<>();
+//         map.put('2',"abc");
+//         map.put('3',"def");
+//         map.put('4',"ghi");
+//         map.put('5',"jkl");
+//         map.put('6',"mno");
+//         map.put('7',"pqrs");
+//         map.put('8',"tuv");
+//         map.put('9',"wxyz");
+//   numComb(map, s, "");
+//     System.out.println(map.get('2'));
+
+
+        //coin 2
+        // int coins[]={1,2,5};
+        // int amt=5;
+
+        // int n=coins.length;
+        // int a[][]=new int[n][amt+1];
+        // for(int c=1;c<=amt;c++){
+        //     if(c%coins[n-1]==0)a[n-1][c]+=a[n-1][c-coins[n-1]]+1;
+        // }
+        // for(int r=n-2;r>=0;r--){
+        //     for(int c=1;c<=amt;c++){
+        //         if(c%coins[r]==0){
+                   
+        //         }
+                
+        //     }
+        // }
+
+
+
+        // for(int []p:a){
+        //     System.out.println(Arrays.toString(p));
+        // }
+
+        //Unique PAth 2
+    //     int obstacleGrid[][]={{0,0,0},{0,1,0},{0,0,0}};
+    //     int m=obstacleGrid.length;
+    //     int n=obstacleGrid[0].length;
+    //     int ans[]=new int [n]; 
+    //     int obs=1;
+    //     for(int i=n-1;i>=0;i--){
+    //         if(obstacleGrid[m-1][i]==1){
+    //             obs=0;
+    //         }
+    //         ans[i]=obs;
+    //     }
+    //    //System.out.println(Arrays.toString(ans));
+    //     for(int i=m-2;i>=0;i--){
+    //         int temp[]=new int [n];
+    //         if(obstacleGrid[i][n-1]==1)temp[n-1]=0;
+    //         else temp[n-1]=1;
+    //         for(int j=n-2;j>=0;j--){
+    //             if(obstacleGrid[i][j]==1)temp[j]=0;
+    //             else temp[j]=ans[j]+temp[j+1];
+    //         }
+    //         ans=temp;
+    //         System.out.println(Arrays.toString(ans));
+    //     }
+    //     System.out.println(ans[0]);
      
 
     //   //2482
