@@ -3,8 +3,8 @@ import java.util.*;
 
 public class toh{
 public static void toH (int n, String src, String help, String dest){
-if(n==1){
-    System.out.println("transfer disk "+n+" from "+src+" to "+dest);
+if(n==0){
+  // System.out.println("transfer disk "+n+" from "+src+" to "+dest);
     return;
 }
 toH(n-1,src,dest,help);
@@ -15,7 +15,7 @@ toH(n-1,help,src,dest);
 public static void main(String Args[]){
 Scanner sc=new Scanner(System.in);
 int n=sc.nextInt();
-toH(n,"S","H","D");
+toH(4,"S","H","D");
 sc.close();
 }
 

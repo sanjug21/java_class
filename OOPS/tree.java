@@ -89,15 +89,15 @@ public class tree {
         int nodes[]={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         BinaryTree tree=new BinaryTree();
          Node root=tree.buildTree(nodes);
-        System.out.println(root.data);
-        preorder(root);
-        System.out.println();
-        inorder(root);
-        System.out.println();
-        postorder(root);
-        System.out.println();
+        // System.out.println(root.data);
+        // preorder(root);
+        // System.out.println();
+        // inorder(root);
+        // System.out.println();
+        // postorder(root);
+        // System.out.println();
         orderlevel(root);
-        System.out.println("\n"+"height is "+height(root));
+       // System.out.println("\n"+"height is "+height(root));
 
     }
 }

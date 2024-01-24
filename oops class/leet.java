@@ -317,6 +317,15 @@ for(int i=0;i<a.length;i++){
         }
        
     }
+    //combination sum3
+    public void combinationSum3(int []arr,int idx,int k,int sum,List<Integer> temp,List<List<Integer>> ans){
+        if(k==0 && sum==0)ans.add(new ArrayList<>(temp));
+        if(idx>=arr.length || k<=0 || sum<=0)return;
+        temp.add(arr[idx]);
+        combinationSum3(arr,idx+1,k-1,sum-arr[idx],temp,ans);
+        temp.remove(temp.size()-1);
+        combinationSum3(arr,idx+1,k,sum,temp,ans);
+        }
     // permutation string
     public static void combO(String a,String b,ArrayList<String> ls){
         if(a.length() == 0) {
@@ -331,10 +340,380 @@ for(int i=0;i<a.length;i++){
         }
         
     }
-  
+    static int minVal=Integer.MAX_VALUE;
+    public static void minPath(int sum,int grid[][],int i,int j){
+        if (i >= grid.length || j >= grid[0].length) return;
+        if (i == grid.length - 1 && j == grid[0].length - 1) {
+            minVal = Math.min(minVal, sum + grid[i][j]);
+            return;
+        }
+        
+        //System.out.println(sum+" "+i+" "+j);
+        minPath(sum+grid[i][j],grid,i+1,j);
+        minPath(sum+grid[i][j],grid,i,j+1);
+        
+    }
 
-  
-    public static void main(String[] args) {
+
+    //Letter Combinations of a Phone Number
+
+    public static void numComb(HashMap<Character,String> map,String s,String ans){
+        if(s.length()==0){
+            System.out.println(ans);
+            return;
+        }
+       String press=map.get(s.charAt(0));
+       for(int i=0;i<press.length();i++){
+        numComb(map, s.substring(1), ans+press.charAt(i));
+       }
+
+    }
+
+    //or 
+    static String []map={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    public static void letterCombination(String ques,String ans){
+        if(ques.length()==0){
+            System.out.println(ans);
+            return;
+        }
+        char ch=ques.charAt(0);
+        String pressed=map[ch-'0'];
+        for(int i=0;i<pressed.length();i++){
+            letterCombination(ques.substring(1), ans+pressed.charAt(i));
+        }
+    }
+    public static int numSquares(int n) {
+        int[] dp = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            dp[i] = i; // Maximum is i (1^2 + 1^2 + ... + 1^2)
+            for (int j = 1; i - j * j >= 0; j++) {
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+            }
+        }
+        return dp[n];
+    }
+
+    // lexographical
+    public static void counting(int curr,int n,List<Integer>  ans){
+        if(curr>n)return;
+        ans.add(curr);
+       
+        for(int i=0;i<10;i++){
+            if(curr*10+i<=n){
+            counting(curr*10+i, n,ans);
+            }
+            else break;
+        }
+
+    }
+    //410 
+    public static boolean check(int []nums,int m,int target){
+        int subArray=1;
+        int currSum=0;
+        for(int i:nums){
+            currSum+=i;
+            if(currSum>target){
+                subArray++;
+                currSum=i;
+            }
+        }
+       
+        return subArray<=m;
+    }
+    //is subsequence
+    public static boolean isSubsequence(String s,String t){
+        if(s.length()==0)return true;
+        if(t.length()==0)return false;
+        boolean b=s.charAt(0)==t.charAt(0);
+        if(b)b=isSubsequence(s.substring(1), t.substring(1));
+        else b=isSubsequence(s, t.substring(1));
+        return b;
+
+        // char ch[]=s.toCharArray();
+        // for(int i:ch){
+        //     if(t.indexOf(i)!= -1){
+        //         int idx=t.indexOf(i);
+        //         t=t.substring(idx+1);
+        //     }
+        //     else return false;
+        // }
+        // return true;
+    }
+    public static void sudokuSolver(int grid[][],int r,int c){
+        if(c==9){
+            r++;
+            c=0;
+        }
+        if(r==9){
+            display(grid);
+            return;
+        }
+        if(grid[r][c]!=0)sudokuSolver(grid, r, c+1);
+        else {
+            for(int i=1;i<=9;i++){
+                if(isValid(grid,r,c,i)){
+                    grid[r][c]=i;
+                    sudokuSolver(grid, r, c+1);
+                    grid[r][c]=0;
+                }
+            }
+        }
+    }
+    public static boolean isValid(int grid[][],int r,int c,int ch){
+        for(int i=0;i<9;i++){
+            if(i!=r && grid[i][c]==ch)return false;
+            if(i!=c && grid[r][i]==ch)return false;
+        }
+        int i=r-r%3;
+        int j=c-c%3;
+        for (int a = i; a < i + 3; a++) {
+            for (int b = j; b < j + 3; b++) {
+                if( grid[a][b]==ch)return false;
+            }
+        }
+        return true;
+    }
+    public static void display(int grid[][]){
+        for(int c[]:grid)System.out.println(Arrays.toString(c));
+    }
+     public static void main(String[] args) {
+        int[][] grid = { { 3, 0, 6, 5, 0, 8, 4, 0, 0 }, { 5, 2, 0, 0, 0, 0, 0, 0, 0 }, { 0, 8, 7, 0, 0, 0, 0, 3, 1 },
+				         { 0, 0, 3, 0, 1, 0, 0, 8, 0 }, { 9, 0, 0, 8, 6, 3, 0, 0, 5 }, { 0, 5, 0, 0, 9, 0, 6, 0, 0 },
+				         { 1, 3, 0, 0, 0, 0, 2, 5, 0 }, { 0, 0, 0, 0, 0, 0, 0, 7, 4 }, { 0, 0, 5, 2, 0, 6, 3, 0, 0 } };
+        sudokuSolver(grid, 0, 0);
+
+        
+        // is subsequence
+        // String s="abc",t="ahbgdc";
+        // System.out.println(isSubsequence(s, t));
+
+        // //410
+        // int nums[]={7,2,5,10,8};
+        // int k=2;
+        // int l=0,r=0;
+        // for(int i:nums){
+        //     if(i>l)l=i;
+        //     r+=i;
+        // }
+        // int ans=r;
+        // while(l<=r){
+        //     int mid=(l+r)/2;
+        //     if(check(nums,k,mid)){
+        //         ans=mid;
+        //         r=mid-1;
+        //     }else l=mid+1;
+
+        // }
+        // System.out.println(ans);
+
+        //1481
+        // int arr[]={5,5,4};
+        // int k=1;
+        // int n=arr.length;
+        
+        // HashMap<Integer,Integer>map =new HashMap<>();
+        // for(int i:arr){
+        //     if(map.containsKey(i))map.put(i,map.get(i)+1);
+        //     else map.put(i,1);
+        // }
+        // int freq[]=new int [n+1];
+        // int ans=map.size();
+        // for(int i:map.values()){
+        //     freq[i]++;
+        // }
+        // System.out.println(Arrays.toString(freq));
+        // for(int i=1;i<=n;i++){
+        //     int remove=freq[i];
+        //     if(k>=i*remove){
+        //         k-=i*remove;
+        //         ans-=remove;
+        //     }
+        //     else{
+        //         remove=k/i;
+        //         ans-=remove;
+        //         break;
+        //     }
+        // }
+        // System.out.println(ans);
+
+        // int nums[]={5,5,10};
+        // Arrays.sort(nums);
+        // int n=nums.length-1;
+        // int a[]=new int[n];
+        // a[0]=nums[0];
+        // long ans=0;
+        // for(int i=1;i<n;i++)a[i]=a[i-1]+nums[i];
+        // for(int i=n;i>1;i--){
+        //     if(nums[i]<a[i-1]){
+        //         System.out.println(nums[i]+a[i-1]);
+        //         break;
+        //     }
+        // }
+        // System.out.println(Arrays.toString(a));
+
+        // //lexographical
+        // int n=100;
+        // List<Integer>  ans=new ArrayList<>();
+        // for(int i=1;i<10;i++){
+        //     counting(i,n,ans);
+        // }
+
+    //     //uniquepath 2
+    //     int [][]obstacleGrid={{0,0},{1,1},{0,0}};
+    //     int m=obstacleGrid.length,n=obstacleGrid[0].length;
+    //     if(obstacleGrid[m-1][n-1]==1)System.out.println(0);;
+    //     int ans[]=new int[n];
+    //     ans[n-1]=1;
+    //     for(int i=n-2;i>=0;i--){
+    //         if(obstacleGrid[m-1][i]==0)ans[i]+=ans[i+1];
+    //     }
+    //     System.out.println(Arrays.toString(ans));
+    //     for(int i=m-2;i>=0;i--){
+    //         int temp[]=new int[n];
+    //         if(obstacleGrid[i][n-1]==0)temp[n-1]=ans[n-1];
+    //         for(int j=n-2;j>=0;j--){
+    //             if(obstacleGrid[i][j]==0)temp[j]=temp[j+1]+ans[j];
+    //         }
+    //         ans=temp;
+    //         System.out.println(Arrays.toString(ans));
+    //     }
+    //     System.out.println(ans[0]);
+    //    // System.out.println(Arrays.toString(ans));
+
+
+        // // palindrome substring
+        // String s="abc";
+        // int n=s.length();
+        // int odd=0;
+        // int even=0;
+        // for(int ax=0;ax<n;ax++){
+        //     for(int or=0;ax-or>=0 && ax+or<n;or++){
+        //         if(s.charAt(ax-or)!=s.charAt(ax+or))break;
+        //         odd++;
+        //     }
+        // }
+        // for(double ax=0.5;ax<n;ax++){
+        //     for(double or=0.5;ax-or>=0 && ax+or<n;or++){
+        //         if(s.charAt((int)(ax-or))!=s.charAt((int)(ax+or)))break;
+        //         even++;
+        //     }
+        // }
+        // System.out.println(odd+even);
+
+        // //perfect square
+        // int n=13;
+        // System.out.println(numSquares(n));
+       
+
+
+    //     //451 sort character by frequency
+    //     String s="cccaaa"; 
+    //     char ch[]=s.toCharArray();
+    //     int freq[]=new int[128];
+    //     for(char c:ch)freq[c]++;
+    //     for(int i=0;i<ch.length;){
+    //         char cmax=',';
+    //         for(int j=0;j<128;j++)if(freq[j]>freq[cmax])cmax=(char)j;
+    //         while(freq[cmax]!=0){
+    //             ch[i++]=cmax;
+    //             freq[cmax]--;
+    //         }
+    //     }
+    //    System.out.println(Arrays.toString(ch));
+
+
+       
+    //     //1383 max performance
+    //     int n=3;
+    //     int k=2;
+    //     int speed[]={2,8,2};
+    //     int efficiency[]={2,7,1};
+    //     PriorityQueue<Integer> pq=new PriorityQueue<>(k);
+    //     long ans=0;
+    //     long spd=0;
+    //     int play[][]=new int [n][2];
+    //     for(int i=0;i<n;i++){
+    //         play[i][0]=efficiency[i];
+    //         play[i][1]=speed[i];}
+        
+    //     Arrays.sort(play,(p1,p2)->(p2[0]-p1[0]));
+
+    //       for(int i=0;i<n;i++){
+    //           if(pq.size()>=k)spd-=pq.poll();
+    //           pq.add(play[i][1]);
+    //           spd+=play[i][1];
+    //           ans=Math.max(ans,spd*play[i][0]);
+    //       }
+        
+    //    System.out.println(ans);
+
+        //Letter Combinations of a Phone Number
+      //  letterCombination("23", "");
+
+        // or
+//         String s="23";
+//         HashMap <Character,String> map=new HashMap<>();
+//         map.put('2',"abc");
+//         map.put('3',"def");
+//         map.put('4',"ghi");
+//         map.put('5',"jkl");
+//         map.put('6',"mno");
+//         map.put('7',"pqrs");
+//         map.put('8',"tuv");
+//         map.put('9',"wxyz");
+//   numComb(map, s, "");
+//     System.out.println(map.get('2'));
+
+
+        //coin 2
+        // int coins[]={1,2,5};
+        // int amt=5;
+
+        // int n=coins.length;
+        // int a[][]=new int[n][amt+1];
+        // for(int c=1;c<=amt;c++){
+        //     if(c%coins[n-1]==0)a[n-1][c]+=a[n-1][c-coins[n-1]]+1;
+        // }
+        // for(int r=n-2;r>=0;r--){
+        //     for(int c=1;c<=amt;c++){
+        //         if(c%coins[r]==0){
+                   
+        //         }
+                
+        //     }
+        // }
+
+
+
+        // for(int []p:a){
+        //     System.out.println(Arrays.toString(p));
+        // }
+
+        //Unique PAth 2
+    //     int obstacleGrid[][]={{0,0,0},{0,1,0},{0,0,0}};
+    //     int m=obstacleGrid.length;
+    //     int n=obstacleGrid[0].length;
+    //     int ans[]=new int [n]; 
+    //     int obs=1;
+    //     for(int i=n-1;i>=0;i--){
+    //         if(obstacleGrid[m-1][i]==1){
+    //             obs=0;
+    //         }
+    //         ans[i]=obs;
+    //     }
+    //    //System.out.println(Arrays.toString(ans));
+    //     for(int i=m-2;i>=0;i--){
+    //         int temp[]=new int [n];
+    //         if(obstacleGrid[i][n-1]==1)temp[n-1]=0;
+    //         else temp[n-1]=1;
+    //         for(int j=n-2;j>=0;j--){
+    //             if(obstacleGrid[i][j]==1)temp[j]=0;
+    //             else temp[j]=ans[j]+temp[j+1];
+    //         }
+    //         ans=temp;
+    //         System.out.println(Arrays.toString(ans));
+    //     }
+    //     System.out.println(ans[0]);
      
 
     //   //2482

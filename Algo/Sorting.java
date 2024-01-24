@@ -1,5 +1,6 @@
 package Algo;
 
+
 public class Sorting {
     // Insertion Sort
     public static void Insertion(int []nums){
@@ -53,8 +54,58 @@ public class Sorting {
     }
 
 
-    public static void  Quick(int nums){
-
+    public static int[] merge(int nums[],int st,int ed){
+        if(st==ed){
+            int bs[]={nums[st]};
+            return bs;
+        }
+        int mid=(st+ed)/2;
+        int []f=merge(nums, st, mid);
+        int []l=merge(nums, mid+1, ed);
+        return mergeTwoArray(f, l);
+        
     }
+    public static int[] mergeTwoArray(int a[],int b[]){
+        int l1=a.length,l2=b.length;
+        int ans[]=new int[l1+l2];
+        int idx=0,i=0,j=0;
+        while (i<l1 && j<l2) {
+            if(a[i]<b[j])ans[idx++]=a[i++];
+            else ans[idx++]=b[j++];
+        }
+        while (i<l1)ans[idx++]=a[i++];
+        while (j<l2)ans[idx++]=b[j++];                
+        return ans;
+    }
+
+    public static void  Quick(int[] nums,int st,int ed){
+        if(st<ed){
+        int idx=partition(nums, st, ed);
+        Quick(nums,st,idx-1);
+        Quick(nums, idx+1, ed);
+}
+    }
+    public static int partition(int nums[],int s,int ed){
+        // below three line are for randomized sort to improve time complexity to n log n
+        // Random rd=new Random();
+        // int ii=rd.nextInt(ed-s+1)+s;
+        // swap(nums, ii, ed);
+        int idx=s;
+        int item=nums[ed];
+        for(int i=s;i<ed;i++ )if(nums[i]<item)swap(nums, i, idx++);
+        swap(nums, ed,idx);
+        return idx;
+    }
+    public static void swap(int a[],int i,int j){
+        int temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+public static void main(String[] args) {
+    
+}
    
+
+   // lambda function
+//Arrays.sort(a, (p,q)->(q[col]-p[col]));
 }
