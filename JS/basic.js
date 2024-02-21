@@ -59,6 +59,7 @@
 // console.log(cout)
 
 
+<<<<<<< HEAD
 // //Prototype
 // // denderProto
 // let obj={
@@ -123,3 +124,34 @@
 console.log("start");
 setTimeout(function(){console.log("after 4 sec")},4*1000)
 console.log("end")
+=======
+//Prototype
+// denderProto
+let obj={
+    a:23,
+    b:"Sanju",
+    c:function(){
+        console.log("Singh")
+    }
+}
+console.log(obj.b)
+console.log(obj.c())
+let ar=[10,20,30];
+
+// normal function
+function sam(){
+
+}
+let oob=sam()
+console.log(oob)
+
+
+//constructor function
+function sam(){
+this.naam="cashew"
+this.age=2
+}
+let ob=new sam()
+console.log(ob)
+
+>>>>>>> 9b05b41d0e73958e4487834bb655add185685292
