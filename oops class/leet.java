@@ -382,6 +382,7 @@ for(int i=0;i<a.length;i++){
             letterCombination(ques.substring(1), ans+pressed.charAt(i));
         }
     }
+
     public static int numSquares(int n) {
         int[] dp = new int[n + 1];
         for (int i = 1; i <= n; i++) {
@@ -476,11 +477,83 @@ for(int i=0;i<a.length;i++){
     public static void display(int grid[][]){
         for(int c[]:grid)System.out.println(Arrays.toString(c));
     }
+
+    public static boolean check(char c){
+        if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u')return true;
+        return false;
+    }
+    //735
+    public static int[] convert(Stack<Integer> stack) {
+        int[] arr = new int[stack.size()];
+        for (int i = stack.size() - 1; i >= 0; i--) {
+            arr[i] = stack.pop();
+        }
+        return arr;
+    }
      public static void main(String[] args) {
-        int[][] grid = { { 3, 0, 6, 5, 0, 8, 4, 0, 0 }, { 5, 2, 0, 0, 0, 0, 0, 0, 0 }, { 0, 8, 7, 0, 0, 0, 0, 3, 1 },
-				         { 0, 0, 3, 0, 1, 0, 0, 8, 0 }, { 9, 0, 0, 8, 6, 3, 0, 0, 5 }, { 0, 5, 0, 0, 9, 0, 6, 0, 0 },
-				         { 1, 3, 0, 0, 0, 0, 2, 5, 0 }, { 0, 0, 0, 0, 0, 0, 0, 7, 4 }, { 0, 0, 5, 2, 0, 6, 3, 0, 0 } };
-        sudokuSolver(grid, 0, 0);
+
+
+        
+    //     // 1750
+    //  String s="abbbbbbbbbbbba";
+    //  int j=s.length()-1;
+    //  int i=0;
+    //  while(i<j){
+    //      char a=s.charAt(i);
+    //      char b=s.charAt(j);
+    //      if(a==b){
+    //         i++;
+    //         j--;
+    //          while(a==s.charAt(i) && i<=j)i++;
+    //          while(b==s.charAt(j) && i<=j)j--;
+    //      }
+    //      else break;
+    //  }
+    //  System.out.println(j-i+1);
+
+
+        // //735
+        // int []asteroids={10,2,-5};
+        // Stack <Integer> st=new Stack<>();
+        // for(int i:asteroids){
+        //     if(st.isEmpty()|| i>0)st.push(i);
+        //     else{
+        //         while(!st.isEmpty() && st.peek()<(-i) && st.peek()>0)st.pop();
+        //         if(st.isEmpty()|| st.peek()<0)st.push(i);
+        //         else if(st.peek() ==-i)st.pop();
+        //     }
+        // }
+
+        // System.out.println(st);
+
+
+        // // 1456
+        // String s="tryhard";
+        // int k=1;
+        // int n=s.length();
+        // int dp[]=new int[n];
+        // for(int i=0;i<n;i++)if(check(s.charAt(i)))dp[i]=1;
+        // // System.out.println(Arrays.toString(dp));
+        // int max=0;
+        // int sum=0,idx=0;
+        // for(int i=0;i<n;i++){
+        //     if(i<k){
+        //         sum+=dp[i];
+        //          max=Math.max(max,sum);
+        //         }
+        //     else {
+        //         sum=sum+dp[i]-dp[idx++];
+        //         max=Math.max(max,sum);
+        //         }
+        // }
+        // System.out.println(max);
+
+
+        // sudoku
+        // int[][] grid = { { 3, 0, 6, 5, 0, 8, 4, 0, 0 }, { 5, 2, 0, 0, 0, 0, 0, 0, 0 }, { 0, 8, 7, 0, 0, 0, 0, 3, 1 },
+		// 		         { 0, 0, 3, 0, 1, 0, 0, 8, 0 }, { 9, 0, 0, 8, 6, 3, 0, 0, 5 }, { 0, 5, 0, 0, 9, 0, 6, 0, 0 },
+		// 		         { 1, 3, 0, 0, 0, 0, 2, 5, 0 }, { 0, 0, 0, 0, 0, 0, 0, 7, 4 }, { 0, 0, 5, 2, 0, 6, 3, 0, 0 } };
+        // sudokuSolver(grid, 0, 0);
 
         
         // is subsequence

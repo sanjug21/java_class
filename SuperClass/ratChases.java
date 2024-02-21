@@ -1,10 +1,10 @@
 package SuperClass;
-
 import java.util.*;
-public class ratChases{
-    public static boolean t=true;
+class ratChases {
+    public static boolean t;
     public static void main(String args[]) {
-          Scanner sc = new Scanner(System.in);
+        t=true;
+        Scanner sc = new Scanner(System.in);
         int m=sc.nextInt();
         int n=sc.nextInt();
         char ch[][]=new char [m][n];
@@ -15,6 +15,8 @@ public class ratChases{
         int ans[][]=new int[m][n];
         ratChaseCheese(ans,ch,0,0,m,n);
         if(t)System.out.println("NO PATH FOUND");
+        sc.close();
+        
     }
     public static void ratChaseCheese(int a[][],char ch[][],int cr,int cc,int R,int C) {
         if(cc==C-1 && cr==R-1){

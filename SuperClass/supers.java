@@ -2,7 +2,6 @@ package SuperClass;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 public class supers {
     public static int pow(int n,int k){
