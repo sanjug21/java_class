@@ -14,5 +14,4 @@ innerFunc();
 // code 2
 console.log(myLet);
 console.log("hi");
-let myLet;
-
+let myLet=10;

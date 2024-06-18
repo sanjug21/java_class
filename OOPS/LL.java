@@ -78,6 +78,7 @@ class LL {
             list.remove(5);
             list.printList();
            System.out.println(list.sizeOf());
+           
         
         }
 }

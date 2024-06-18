@@ -209,17 +209,75 @@
 
 // printNumbersWithDelay();
 
-function printNumbersWithDelay() {
-    let i = 1;
-    function printNumber() {
-        console.log(i);
-        i++;
-        if (i <= 5) {
-            setTimeout(printNumber, 2000);
-        }
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// function printNumbersWithDelay() {
+//     let i = 1;
+//     function printNumber() {
+//         console.log(i);
+//         i++;
+//         if (i <= 5) {
+//             setTimeout(printNumber, 2000);
+//         }
+//     }
+//     printNumber();
+// }
+
+// printNumbersWithDelay();
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// constructor function
+
+
+// function Person(name,age,color){
+//     this.name=name
+//     this.age=age;
+//     this.color=color
+// }
+// Person.prototype.fn=function(){console.log("hi")}
+// let p=new Person("sanju",22,"Red");
+
+// let p1=new Person("shubham",22,"Red");
+// console.log(p.fn)
+// console.log(p1)
+
+// let obj={
+//     a:10,
+//     b:function(){
+//         console.log("raj")
+//     }
+// }
+// console.log(obj);
+// console.log(obj.a);
+// console.log(obj);
+// obj.b();
+// obj.c();
+// console.log(obj.toString());
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+class Person{
+    constructor(name,age,color){
+        this.name=name
+        this.age=age;
+        this.color=color
     }
-    printNumber();
+    fn(){
+        console.log("hi")
+    }
+    greet(){
+        return "Radhe Radhe"
+    }
 }
+class Student extends Person{
+    constructor(name,age,color,batch){
+        super(name,age,color)
+        this.batch=batch
+    }
 
-printNumbersWithDelay();
-
+}
+let p=new Student("shubham",22,"Red",1);
+console.log(p)
