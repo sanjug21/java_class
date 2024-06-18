@@ -349,7 +349,6 @@ public class medium {
             a[i][1]=profit[i];
         }
         Arrays.sort(a,(p,q)->q[1]-p[1]);
-       Arrays.sort(worker);
         for(int i:worker){
             for(int j[]:a){     
                 if(i>=j[0]){
@@ -360,6 +359,46 @@ public class medium {
         }
         return ans;
     }
+    // 150. Evaluate Reverse Polish Notation
+    public static int evalRPN(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+        String symbol = "+-*/";
+        for(String token: tokens) {
+            if(token.length() == 1 && symbol.indexOf(token.charAt(0)) >= 0) {
+                int a = stack.pop(), b = stack.pop(), c = 0;
+                switch(token.charAt(0)){
+                    case '+':
+                    c = a + b;
+                    break;
+                    case '-':
+                    c = b - a;
+                    break;
+                    case '*':
+                    c = a * b;
+                    break;
+                    case '/':
+                    c = b / a;
+                }
+                stack.push(c);
+            }else stack.push(Integer.valueOf(token));
+        }
+        return stack.pop();
+    }
+    // 2410. Maximum Matching of Players With Trainers
+    public static int matchPlayersAndTrainers(int[] players, int[] trainers) {
+        Arrays.sort(players);
+        Arrays.sort(trainers);
+        int ans=0;
+        for (int i = trainers.length - 1, j = players.length - 1; i >= 0 && j >= 0; j--) {
+            if (trainers[i] >= players[j]) {
+                ans++;
+                i--;
+            }
+        }
+        return ans;
+        
+    }
+    
 
     // 838. Push Dominoes
     public static String pushDominoes(String dominoes) {
@@ -369,7 +408,7 @@ public class medium {
         
     }
     public static void main(String[] args) {
-      System.out.println(maxProfitAssignment(new int[]{68,35,52,47,86}, new int[]{67,17,1,81,3}, new int []{92,10,85,84,82}));
+      System.out.println();
         
         
     }

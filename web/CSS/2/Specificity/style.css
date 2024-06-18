@@ -1,0 +1,18 @@
+
+/* Specificity */
+
+/* id>class>element */
+
+#first{
+    color: coral;
+}
+.sanju{
+    color: green;
+}
+div{
+    color: cyan;
+}
+div{
+    font-size: 20px;
+    color: goldenrod;
+}
