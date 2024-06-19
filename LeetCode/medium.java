@@ -3,7 +3,6 @@ package LeetCode;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -398,7 +397,59 @@ public class medium {
         return ans;
         
     }
-    
+    // 658. Find K Closest Elements
+    public static List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int l=0,r=arr.length-k;
+        while(l<r){
+            int mid=l+(r-l)/2;
+            if((x-arr[mid])>(arr[mid+k]-x)){
+                l=mid+1;
+            }
+            else r=mid;
+        }
+        List<Integer>ans=new ArrayList<>();
+        for(int i=l;i<l+k;i++)ans.add(arr[i]);
+        return ans;
+    }
+    // 752. Open the Lock
+    public static int openLock(String[] deadends, String target) {
+        HashSet<String> set=new HashSet<>(Arrays.asList(deadends));
+        if(set.contains("0000"))return -1;
+        Deque<String> q=new ArrayDeque<>();
+        q.add("0000");
+        int ans=0;
+        while (!q.isEmpty()) {
+            int size=q.size();
+            while (size-->0) {
+                String lock=q.poll();
+                if(lock.equals(target))return ans;
+                for(String s:children(lock)){
+                    if(!set.contains(s)){
+                        q.add(s);
+                        set.add(s);
+                    }
+                } 
+            }
+            ans++;            
+        }
+        return -1;
+
+    }
+    public static List<String> children(String s){
+        List<String> children=new ArrayList<>();
+        
+        for(int i=0;i<4;i++){
+            StringBuilder sb=new StringBuilder(s);
+            char c=sb.charAt(i);
+            sb.setCharAt(i, c=='9'?'0':(char)(c+1));
+            children.add(sb.toString());
+            sb.setCharAt(i, c=='0'?'9':(char)(c-1));
+            children.add(sb.toString());
+
+        }
+       
+        return children;
+    }
 
     // 838. Push Dominoes
     public static String pushDominoes(String dominoes) {
@@ -408,7 +459,7 @@ public class medium {
         
     }
     public static void main(String[] args) {
-      System.out.println();
+      System.out.println(openLock(new String[]{"0201","0101","0102","1212","2002"}, "0202"));
         
         
     }
