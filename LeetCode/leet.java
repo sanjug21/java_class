@@ -383,11 +383,7 @@ for(int i=0;i<a.length;i++){
             letterCombination(ques.substring(1), ans+pressed.charAt(i));
         }
     }
-<<<<<<< HEAD:LeetCode/leet.java
 
-=======
-<<<<<<< HEAD
->>>>>>> 1ae4069b5b5a1afcabb471d0cbc4fe58258c83d3:oops class/leet.java
     public static int numSquares(int n) {
         int[] dp = new int[n + 1];
         for (int i = 1; i <= n; i++) {
@@ -726,16 +722,8 @@ for(int i=0;i<a.length;i++){
     //    System.out.println(ans);
 
         //Letter Combinations of a Phone Number
-      //  letterCombination("23", "");
-<<<<<<< HEAD:LeetCode/leet.java
-=======
-=======
-  
-    public static void main(String[] args) {
-        //Letter Combinations of a Phone Number
-        letterCombination("23", "");
->>>>>>> 9b05b41d0e73958e4487834bb655add185685292
->>>>>>> 1ae4069b5b5a1afcabb471d0cbc4fe58258c83d3:oops class/leet.java
+      //  letterCombination("23", "")
+
 
         // or
 //         String s="23";
